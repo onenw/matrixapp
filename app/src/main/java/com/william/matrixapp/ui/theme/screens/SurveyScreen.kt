@@ -49,15 +49,15 @@ fun SurveyScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Unspecified)
+            .background(color = Color.White)
             .padding(16.dp),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LinearProgressIndicator(
-            trackColor= ProgressIndicatorDefaults.linearTrackColor,
+             trackColor= ProgressIndicatorDefaults.linearTrackColor,
             progress = progress,
-            modifier = Modifier 
+            modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
 
@@ -69,7 +69,9 @@ fun SurveyScreen(navController: NavHostController) {
 
 
         Spacer(modifier = Modifier.height(16.dp))
-
+Text(
+    text = currentQuestion.text
+)
         currentQuestion.option.forEach { option: String ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -84,29 +86,38 @@ fun SurveyScreen(navController: NavHostController) {
                 Text(option)
             }
         }
+Row (
+    horizontalArrangement = Arrangement.SpaceBetween
 
-
-        Spacer(modifier = Modifier.height(24.dp))
-        Button(
-            onClick = {
-                response.add(
-                    Surveyreponse(
-                        question = currentQuestion.text,
-                        answer = selectedOption
-                    )
+){
+    Spacer(modifier = Modifier.height(24.dp))
+    Button(
+        onClick = {
+            response.add(
+                Surveyreponse(
+                    question = currentQuestion.text,
+                    answer = selectedOption
                 )
-                if (currentIndex < totalQuestions - 1) {
-                      currentIndex++
-                    selectedOption = ""
+            )
+            if (currentIndex < totalQuestions - 1) {
+                currentIndex++
+                selectedOption = ""
 
-                } else {
-                    navController.navigate("thankyou")
-                }
-            },
-            enabled = selectedOption.isNotEmpty()
-        ) {
-            Text(if (currentIndex == totalQuestions - 1) "Submit" else "Next")
-        }
+            } else {
+                navController.navigate("thank you")
+            }
+        },
+        enabled = selectedOption.isNotEmpty()
+    ) {
+        Text(if (currentIndex == totalQuestions - 1) "Submit" else "Next")
+
+    }
+
+
+}
+
+
+
 
     }
 

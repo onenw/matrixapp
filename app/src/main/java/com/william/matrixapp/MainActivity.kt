@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.william.matrixapp.ui.theme.MatrixAppTheme
 import com.william.matrixapp.ui.theme.screens.SurveyApp
 
@@ -20,9 +22,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MatrixAppTheme {
+                val navController: NavHostController= rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SurveyApp()
-
+                    SurveyApp(
+                        navController = navController
+                    )
                 }
             }
         }
@@ -32,6 +36,9 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 private fun Homeprev() {
-    SurveyApp()
+    SurveyApp(
+        modifier = Modifier,
+        navController = rememberNavController()
+    )
 }
 

@@ -11,14 +11,26 @@ data class SurveyData(
     val type: QuestionType
 )
 val surveyData = listOf(
-    SurveyData ("Do you enjoy using this App?",
-        option =  listOf("Yes","No","Maybe"),
+    SurveyData ("What type of farming do you practice?",
+        option =  listOf("Crop farming","Livestock farming","Mixed farming","Others"),
         type = QuestionType.SINGLE_CHOICE),
-    SurveyData ("Would you  recommend it to others?",
-        option = listOf("Definitely  ","Not Sure","No"),
+    SurveyData ("What is the size of your farm?",
+        option = listOf("Less than 1 acre","1-5 acres","5-10 acres","Over 10 acres"),
         type = QuestionType.MULTIPLE_CHOICE),
-    SurveyData ("How would you rate your experience?",
-        option = listOf("Excellent","Good","Fair","Poor"),
+    SurveyData ("Which crops do you grow most frequently?",
+        option = listOf("maize","Beans","Rice","Vegetables","Fruits","Others"),
         type = QuestionType.TEXT_INPUT),
+    SurveyData ("Do you use modern farming techniques?",
+        option = listOf("Yes","No","Partially"),
+        type = QuestionType.TEXT_INPUT),
+    SurveyData ("Where do you sell your farm products?",
+        option = listOf("Local markets","Middlemen","Cooperative","Export","Others"),
+        type = QuestionType.TEXT_INPUT),
+    SurveyData ("What challenges do you face in farming?",
+        option = listOf("Lack of capital","Pests & diseases",
+            "Unreliable markets","Poor infrastructure","Climate changes","Others"),
+        type = QuestionType.TEXT_INPUT),
+
+
 
 )
